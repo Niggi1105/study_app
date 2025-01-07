@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,35 +9,41 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Study-App',
-      home: Scaffold(
-          appBar: AppBar(
-            title: Center(child: const Text('Study-App')),
-            backgroundColor: Colors.white,
+    return MaterialApp(title: 'Study-App', home: HomePage());
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: const Text('Study-App')),
+        backgroundColor: Colors.white,
+      ),
+      body: Stack(
+        children: [
+          Container(
+            color: const Color.fromARGB(255, 0, 34, 61),
           ),
-          body: Stack(
-            children: [
-              Container(
-                color: const Color.fromARGB(255, 0, 34, 61),
-              ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Column(
-                  verticalDirection: VerticalDirection.down,
-                  children: [
-                    Notification(key: Key('notification')),
-                  ],
-                ),
-              )
-            ],
-          )),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Column(
+              verticalDirection: VerticalDirection.down,
+              children: [
+                Notification(key: Key('notification')),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
 
-///
+/// A widget for the notification
 class Notification extends StatelessWidget {
   const Notification({super.key});
 
@@ -55,4 +61,3 @@ class Notification extends StatelessWidget {
     );
   }
 }
-
