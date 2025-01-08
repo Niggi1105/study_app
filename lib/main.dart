@@ -9,12 +9,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Study-App', home: HomePage());
+    return MaterialApp(title: 'Study-App', home: Dashboard());
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+/// This is the widget representing the dashboard of the app
+class Dashboard extends StatelessWidget {
+  const Dashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +33,12 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             child: Column(
               verticalDirection: VerticalDirection.down,
+              spacing: 16,
               children: [
-                Notification(key: Key('notification')),
+                Notification(),
+                Text('Donnerstag, 12. Dezember',
+                    style: TextStyle(color: Colors.white, fontSize: 22)),
+                ExternLinks(),
               ],
             ),
           )
@@ -52,7 +57,7 @@ class Notification extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 150,
+          height: 135,
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -99,12 +104,113 @@ class Notification extends StatelessWidget {
             Center(
               child: Text(
                 '01.01.2022',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15),
               ),
             ),
           ],
         )
       ],
+    );
+  }
+}
+
+class ExternLinks extends StatelessWidget {
+  const ExternLinks({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      spacing: 20,
+      children: [
+        OpalLink(),
+        SelmaLink(),
+        MatrixLink(),
+        MailLink()
+      ],
+    );
+  }
+}
+
+class OpalLink extends StatelessWidget {
+  const OpalLink({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          FloatingActionButton(
+            onPressed: () {}, //TODO: Add link to Opal
+            backgroundColor: Colors.lightBlue,
+            child: Icon(Icons.attach_file, color: Colors.white,),
+          ),
+          Text('Opal', style: TextStyle(color: Colors.white, fontSize: 15)),
+        ],
+      ),
+    );
+  }
+}
+
+class SelmaLink extends StatelessWidget {
+  const SelmaLink({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          FloatingActionButton(
+            onPressed: () {}, //TODO: Add link to Selma
+            backgroundColor: const Color.fromARGB(255, 255, 136, 0),
+            child: Icon(Icons.folder, color: Colors.white,),
+          ),
+          Text('Selma', style: TextStyle(color: Colors.white, fontSize: 15)),
+        ],
+      ),
+    );
+  }
+}
+
+class MatrixLink extends StatelessWidget {
+  const MatrixLink({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          FloatingActionButton(
+            onPressed: () {}, //TODO: Add link to Matrix Chat
+            backgroundColor: const Color.fromARGB(255, 0, 156, 117),
+            child: Icon(Icons.chat_bubble, color: Colors.white,),
+          ),
+          Text('Matrix', style: TextStyle(color: Colors.white, fontSize: 15)),
+        ],
+      ),
+    );
+  }
+}
+
+class MailLink extends StatelessWidget {
+  const MailLink({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          FloatingActionButton(
+            onPressed: () {}, //TODO: Add link to Mail
+            backgroundColor: const Color.fromARGB(255, 255, 41, 173),
+            child: Icon(Icons.mail, color: Colors.white,),
+          ),
+          Text('Mail', style: TextStyle(color: Colors.white, fontSize: 15)),
+        ],
+      ),
     );
   }
 }
