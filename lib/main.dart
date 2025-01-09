@@ -22,20 +22,37 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: const Text('Study-App')),
+        centerTitle: true,
+        title: const Text('Study-App'),
         backgroundColor: Colors.white,
       ),
+      drawer: Drawer(width: 300, child: DrawerPage(),),
+      
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: const Color.fromARGB(255, 0, 34, 61),
+        selectedItemColor: const Color.fromARGB(255, 0, 34, 61),
+        selectedFontSize: 15,
+        unselectedFontSize: 15,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
             label: 'Dash',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.music_note),
+            label: 'Musik',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'Stundenplan',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.list),
             label: 'todo',
             
           ),
+
         ],
       ),
       body: Stack(
@@ -59,6 +76,37 @@ class Dashboard extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class DrawerPage extends StatelessWidget {
+  const DrawerPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        MenuItemButton(onPressed: () {}, child: Row(
+          children: [
+            Text('Profile', style: TextStyle(color: Colors.black, fontSize: 20, )),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(180.0, 0,0,0),
+              child: Icon(Icons.account_circle, color: Colors.black,),
+            ),
+          ],
+        )),
+        MenuItemButton(onPressed: () {}, child: Row(
+          children: [
+            Text('Settings', style: TextStyle(color: Colors.black, fontSize: 20, )),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(165.0, 0,0,0),
+              child: Icon(Icons.settings, color: Colors.black,),
+            ),
+          ],
+        )),
+      ],
     );
   }
 }
@@ -313,6 +361,7 @@ class MensaInfo extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            spacing: 10,
             children: [
               Icon(
                 Icons.local_cafe,
@@ -324,7 +373,7 @@ class MensaInfo extends StatelessWidget {
                     color: const Color.fromARGB(255, 0, 34, 61), fontSize: 18),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(220, 0, 0, 0),
+                padding: const EdgeInsets.fromLTRB(200, 0, 0, 0),
                 child: IconButton(
                   icon: Icon(
                     Icons.more_vert,
