@@ -28,6 +28,7 @@ class Dashboard extends StatelessWidget {
       ),
       drawer: Drawer(width: 300, child: DrawerPage(),),
       
+      //basic navigation bar at the bottom of the sacffold
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: const Color.fromARGB(255, 0, 34, 61),
@@ -58,6 +59,7 @@ class Dashboard extends StatelessWidget {
       body: Stack(
         children: [
           Container(
+            //background color of the dashboard
             color: const Color.fromARGB(255, 0, 34, 61),
           ),
           Padding(
@@ -80,6 +82,7 @@ class Dashboard extends StatelessWidget {
   }
 }
 
+/// A simple Drawer for settings and profile mangaement
 class DrawerPage extends StatelessWidget {
   const DrawerPage({super.key});
 
@@ -101,6 +104,7 @@ class DrawerPage extends StatelessWidget {
           children: [
             Text('Settings', style: TextStyle(color: Colors.black, fontSize: 20, )),
             Padding(
+              //the font size is 15 and Settings has 1 more character than Profile so the padding is 180-15
               padding: const EdgeInsets.fromLTRB(165.0, 0,0,0),
               child: Icon(Icons.settings, color: Colors.black,),
             ),
