@@ -36,8 +36,7 @@ class Dashboard extends StatelessWidget {
               spacing: 16,
               children: [
                 Notification(),
-                Text('Donnerstag, 12. Dezember',
-                    style: TextStyle(color: Colors.white, fontSize: 22)),
+                Date(),
                 ExternLinks(),
               ],
             ),
@@ -52,6 +51,7 @@ class Dashboard extends StatelessWidget {
 class Notification extends StatelessWidget {
   const Notification({super.key});
 
+  //TODO: make this widget dynamic, and allow for it to be collapsed
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -114,6 +114,73 @@ class Notification extends StatelessWidget {
         )
       ],
     );
+  }
+}
+
+
+class Date extends StatelessWidget {
+  const Date({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var date = DateTime.now();
+    var month = monthName(date.month);
+    var day = date.day;
+    var wd = weekdayName(date.weekday);
+    return Text('$wd $day. $month',
+        style: TextStyle(color: Colors.white, fontSize: 22));
+  }
+}
+
+String weekdayName(int wd) {
+  switch (wd) {
+    case 1:
+      return 'Montag';
+    case 2:
+      return 'Dienstag';
+    case 3:
+      return 'Mittwoch';
+    case 4:
+      return 'Donnerstag';
+    case 5:
+      return 'Freitag';
+    case 6:
+      return 'Samstag';
+    case 7:
+      return 'Sonntag';
+    default:
+      return '';
+  }
+}
+
+String monthName(int month) {
+  switch (month) {
+    case 1:
+      return 'Januar';
+    case 2:
+      return 'Februar';
+    case 3:
+      return 'März';
+    case 4:
+      return 'April';
+    case 5:
+      return 'Mai';
+    case 6:
+      return 'Juni';
+    case 7:
+      return 'Juli';
+    case 8:
+      return 'August';
+    case 9:
+      return 'September';
+    case 10:
+      return 'Oktober';
+    case 11:
+      return 'November';
+    case 12:
+      return 'Dezember';
+    default:
+      return '';
   }
 }
 
@@ -214,3 +281,4 @@ class MailLink extends StatelessWidget {
     );
   }
 }
+
