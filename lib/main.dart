@@ -472,7 +472,7 @@ class TimeTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(5),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -480,7 +480,358 @@ class TimeTable extends StatelessWidget {
         color: Colors.white,
       ),
       child: Column(
-        children: [],
+        children: [
+        Row(
+          spacing: 3,
+          children: [
+            Icon(
+              Icons.calendar_month,
+              color: const Color.fromARGB(255, 0, 34, 61),),
+          
+            Text(
+              'Heute',
+              style: TextStyle(
+                color: const Color.fromARGB(255, 0, 34, 61)
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(200, 0, 0, 0),
+              child: IconButton(
+                icon: Icon
+                (Icons.more_vert,
+                color: const Color.fromARGB(255, 0, 34, 61),
+                ),
+                onPressed: () {},
+              ),
+            )
+          ],
+        ),
+        Row(
+          
+          spacing: 13,
+        children: [
+          Container(
+            width: 85,
+            height: 65,
+            padding: const EdgeInsets.all(4),
+            decoration: 
+            ShapeDecoration(
+              shape: 
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Color.fromARGB(2005, 170, 170, 170)
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.menu_book,
+                      color: const Color.fromARGB(255, 0, 34, 61),
+                      size: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          '7:30',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 34, 61),
+                            fontSize: 12
+                          ),
+                        ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'EMI-Ü',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                      Text(
+                        'APB-E040',
+                        style: TextStyle(fontSize: 10),
+                        ),
+                    ],
+                  )
+                ),
+              ],
+            )
+          ),
+
+
+          Container(
+            width: 85,
+            height: 65,
+            padding: const EdgeInsets.all(4),
+            decoration: 
+            ShapeDecoration(
+              shape: 
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Color.fromARGB(2005, 170, 170, 170)
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.sunny,
+                      color: const Color.fromARGB(255, 0, 34, 61),
+                      size: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          '9:20',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 34, 61),
+                            fontSize: 12,
+                          ),
+                        ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Frei',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                    ],
+                  )
+                ),
+              ],
+            )
+          ), 
+
+
+          Container(
+            width: 85,
+            height: 65,
+            padding: const EdgeInsets.all(4),
+            decoration: 
+            ShapeDecoration(
+              shape: 
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Color.fromARGB(2005, 170, 170, 170)
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.school_outlined,
+                      color: const Color.fromARGB(255, 0, 34, 61),
+                      size: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          '11:10',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 34, 61),
+                            fontSize: 12,
+                          ),
+                          
+                        ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'EMI-VL',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                      Text(
+                        'HSZ-03',
+                        style: TextStyle(fontSize: 10),
+                        ),
+
+                    ],
+                  )
+                ),
+              ],
+            )
+          )
+        ],
+        ),
+        Row(
+          spacing: 13,
+        children: [
+          Container(
+            width: 85,
+            height: 65,
+            padding: const EdgeInsets.all(4),
+            decoration: 
+            ShapeDecoration(
+              shape: 
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Color.fromARGB(2005, 170, 170, 170)
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.coffee,
+                      color: const Color.fromARGB(255, 0, 34, 61),
+                      size: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          '13:00',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 34, 61),
+                            fontSize: 12
+                          ),
+                        ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Mensa',
+                        style: TextStyle(fontSize: 13),
+                      ),
+
+                    ],
+                  )
+                ),
+              ],
+            )
+          ),
+
+
+          Container(
+            width: 85,
+            height: 65,
+            padding: const EdgeInsets.all(4),
+            decoration: 
+            ShapeDecoration(
+              shape: 
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Color.fromARGB(2005, 170, 170, 170)
+            ),
+            child: Column(
+              children: [
+              ColoredBox(
+                color: Colors.red),
+
+                Row(
+                  children: [
+                    Icon(
+                      Icons.menu_book,
+                      color: const Color.fromARGB(255, 0, 34, 61),
+                      size: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          '14:50',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 34, 61),
+                            fontSize: 12,
+                          ),
+                        ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'AUD-Ü',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                      Text(
+                        'APB-E001',
+                        style: TextStyle(fontSize: 10),
+                      )
+                    ],
+                  )
+                ),
+
+                
+              ],
+            )
+          ), 
+
+
+          Container(
+            width: 85,
+            height: 65,
+            padding: const EdgeInsets.all(4),
+            decoration: 
+            ShapeDecoration(
+              shape: 
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Color.fromARGB(2005, 170, 170, 170)
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.sunny,
+                      color: const Color.fromARGB(255, 0, 34, 61),
+                      size: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          '11:10',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 34, 61),
+                            fontSize: 12,
+                          ),
+                          
+                        ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Frei',
+                        style: TextStyle(fontSize: 13),
+                      ),
+
+                    ],
+                  )
+                ),
+              ],
+            )
+          )
+        ],
+        ),
+
+
+      ],
       ),
     );
   }
