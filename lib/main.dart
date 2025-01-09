@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'todo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,8 +25,11 @@ class Dashboard extends StatelessWidget {
         title: const Text('Study-App'),
         backgroundColor: Colors.white,
       ),
-      drawer: Drawer(width: 300, child: DrawerPage(),),
-      
+      drawer: Drawer(
+        width: 300,
+        child: DrawerPage(),
+      ),
+
       //basic navigation bar at the bottom of the sacffold
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -51,9 +53,7 @@ class Dashboard extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
             label: 'todo',
-            
           ),
-
         ],
       ),
       body: Stack(
@@ -66,7 +66,7 @@ class Dashboard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             child: Column(
               verticalDirection: VerticalDirection.down,
-              spacing: 16,
+              spacing: 14,
               children: [
                 Notification(),
                 Date(),
@@ -91,25 +91,43 @@ class DrawerPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MenuItemButton(onPressed: () {}, child: Row(
-          children: [
-            Text('Profile', style: TextStyle(color: Colors.black, fontSize: 20, )),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(180.0, 0,0,0),
-              child: Icon(Icons.account_circle, color: Colors.black,),
-            ),
-          ],
-        )),
-        MenuItemButton(onPressed: () {}, child: Row(
-          children: [
-            Text('Settings', style: TextStyle(color: Colors.black, fontSize: 20, )),
-            Padding(
-              //the font size is 15 and Settings has 1 more character than Profile so the padding is 180-15
-              padding: const EdgeInsets.fromLTRB(165.0, 0,0,0),
-              child: Icon(Icons.settings, color: Colors.black,),
-            ),
-          ],
-        )),
+        MenuItemButton(
+            onPressed: () {},
+            child: Row(
+              children: [
+                Text('Profile',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    )),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(180.0, 0, 0, 0),
+                  child: Icon(
+                    Icons.account_circle,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            )),
+        MenuItemButton(
+            onPressed: () {},
+            child: Row(
+              children: [
+                Text('Settings',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    )),
+                Padding(
+                  //the font size is 15 and Settings has 1 more character than Profile so the padding is 180-15
+                  padding: const EdgeInsets.fromLTRB(165.0, 0, 0, 0),
+                  child: Icon(
+                    Icons.settings,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            )),
       ],
     );
   }
@@ -125,7 +143,7 @@ class Notification extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 135,
+          height: 125,
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -355,12 +373,12 @@ class MensaInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(5),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        color: Colors.white,
+        color: const Color.fromARGB(255, 233, 233, 255),
       ),
       child: Column(
         children: [
@@ -377,7 +395,7 @@ class MensaInfo extends StatelessWidget {
                     color: const Color.fromARGB(255, 0, 34, 61), fontSize: 18),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(200, 0, 0, 0),
+                padding: const EdgeInsets.fromLTRB(210, 0, 0, 0),
                 child: IconButton(
                   icon: Icon(
                     Icons.more_vert,
@@ -394,7 +412,7 @@ class MensaInfo extends StatelessWidget {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 10,
+                  spacing: 8,
                   children: [
                     Row(
                       spacing: 4,
@@ -465,6 +483,81 @@ class MensaInfo extends StatelessWidget {
     );
   }
 }
+//an abstraction to create Entries in the time table
+class TimeSlot extends StatelessWidget {
+  Color barcolor;
+  IconData icon;
+  String time;
+  String subject;
+  String room;
+
+  TimeSlot(this.barcolor, this.icon, this.time, this.subject, this.room);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      width: 80,
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        color: Colors.white,
+      ),
+      child: Column(
+        spacing: 10,
+        children: [
+          Stack(
+            children: [
+              Container(
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  color: barcolor,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Icon(
+                        icon,
+                        color: Colors.white,
+                        size: 14,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      child: Text(
+                        time,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Text(
+                subject,
+                style: TextStyle(
+                    color: Color.fromARGB(255, 0, 34, 61), fontSize: 16),
+              ),
+              Text(
+                room,
+                style: TextStyle(
+                    color: Color.fromARGB(255, 0, 34, 61), fontSize: 10),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
 
 class TimeTable extends StatelessWidget {
   const TimeTable({super.key});
@@ -477,361 +570,56 @@ class TimeTable extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        color: Colors.white,
+        color: const Color.fromARGB(255, 233, 233, 255),
       ),
       child: Column(
+        spacing: 10,
         children: [
-        Row(
-          spacing: 3,
-          children: [
-            Icon(
-              Icons.calendar_month,
-              color: const Color.fromARGB(255, 0, 34, 61),),
-          
-            Text(
-              'Heute',
-              style: TextStyle(
-                color: const Color.fromARGB(255, 0, 34, 61)
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(200, 0, 0, 0),
-              child: IconButton(
-                icon: Icon
-                (Icons.more_vert,
+          Row(
+            spacing: 10,
+            children: [
+              Icon(
+                Icons.calendar_month,
                 color: const Color.fromARGB(255, 0, 34, 61),
-                ),
-                onPressed: () {},
               ),
-            )
-          ],
-        ),
-        Row(
-          
-          spacing: 13,
-        children: [
-          Container(
-            width: 85,
-            height: 65,
-            padding: const EdgeInsets.all(4),
-            decoration: 
-            ShapeDecoration(
-              shape: 
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+              Text(
+                'Heute',
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 0, 34, 61),
+                  fontSize: 18,
+                ),
               ),
-              color: Color.fromARGB(2005, 170, 170, 170)
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.menu_book,
-                      color: const Color.fromARGB(255, 0, 34, 61),
-                      size: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text(
-                          '7:30',
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 34, 61),
-                            fontSize: 12
-                          ),
-                        ),
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.fromLTRB(200, 0, 0, 0),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: const Color.fromARGB(255, 0, 34, 61),
+                  ),
+                  onPressed: () {},
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'EMI-Ü',
-                        style: TextStyle(fontSize: 13),
-                      ),
-                      Text(
-                        'APB-E040',
-                        style: TextStyle(fontSize: 10),
-                        ),
-                    ],
-                  )
-                ),
-              ],
-            )
+              )
+            ],
           ),
-
-
-          Container(
-            width: 85,
-            height: 65,
-            padding: const EdgeInsets.all(4),
-            decoration: 
-            ShapeDecoration(
-              shape: 
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Color.fromARGB(2005, 170, 170, 170)
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.sunny,
-                      color: const Color.fromARGB(255, 0, 34, 61),
-                      size: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text(
-                          '9:20',
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 34, 61),
-                            fontSize: 12,
-                          ),
-                        ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Frei',
-                        style: TextStyle(fontSize: 13),
-                      ),
-                    ],
-                  )
-                ),
-              ],
-            )
-          ), 
-
-
-          Container(
-            width: 85,
-            height: 65,
-            padding: const EdgeInsets.all(4),
-            decoration: 
-            ShapeDecoration(
-              shape: 
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Color.fromARGB(2005, 170, 170, 170)
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.school_outlined,
-                      color: const Color.fromARGB(255, 0, 34, 61),
-                      size: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text(
-                          '11:10',
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 34, 61),
-                            fontSize: 12,
-                          ),
-                          
-                        ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'EMI-VL',
-                        style: TextStyle(fontSize: 13),
-                      ),
-                      Text(
-                        'HSZ-03',
-                        style: TextStyle(fontSize: 10),
-                        ),
-
-                    ],
-                  )
-                ),
-              ],
-            )
-          )
-        ],
-        ),
-        Row(
-          spacing: 13,
-        children: [
-          Container(
-            width: 85,
-            height: 65,
-            padding: const EdgeInsets.all(4),
-            decoration: 
-            ShapeDecoration(
-              shape: 
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Color.fromARGB(2005, 170, 170, 170)
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.coffee,
-                      color: const Color.fromARGB(255, 0, 34, 61),
-                      size: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text(
-                          '13:00',
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 34, 61),
-                            fontSize: 12
-                          ),
-                        ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Mensa',
-                        style: TextStyle(fontSize: 13),
-                      ),
-
-                    ],
-                  )
-                ),
-              ],
-            )
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 10,
+            children: [
+              TimeSlot(Color.fromARGB(255, 0, 34, 61), Icons.edit, "7:30", "EMI Ü","APB E040"),
+              TimeSlot(Color.fromARGB(255, 128, 128, 128), Icons.sunny, "9:20", "frei",""),
+              TimeSlot(Color.fromARGB(255, 0, 34, 61), Icons.book, "11:10", "EMI VL","HSZ 03"),
+            ],
           ),
-
-
-          Container(
-            width: 85,
-            height: 65,
-            padding: const EdgeInsets.all(4),
-            decoration: 
-            ShapeDecoration(
-              shape: 
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Color.fromARGB(2005, 170, 170, 170)
-            ),
-            child: Column(
-              children: [
-              ColoredBox(
-                color: Colors.red),
-
-                Row(
-                  children: [
-                    Icon(
-                      Icons.menu_book,
-                      color: const Color.fromARGB(255, 0, 34, 61),
-                      size: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text(
-                          '14:50',
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 34, 61),
-                            fontSize: 12,
-                          ),
-                        ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'AUD-Ü',
-                        style: TextStyle(fontSize: 13),
-                      ),
-                      Text(
-                        'APB-E001',
-                        style: TextStyle(fontSize: 10),
-                      )
-                    ],
-                  )
-                ),
-
-                
-              ],
-            )
-          ), 
-
-
-          Container(
-            width: 85,
-            height: 65,
-            padding: const EdgeInsets.all(4),
-            decoration: 
-            ShapeDecoration(
-              shape: 
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Color.fromARGB(2005, 170, 170, 170)
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.sunny,
-                      color: const Color.fromARGB(255, 0, 34, 61),
-                      size: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text(
-                          '11:10',
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 34, 61),
-                            fontSize: 12,
-                          ),
-                          
-                        ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Frei',
-                        style: TextStyle(fontSize: 13),
-                      ),
-
-                    ],
-                  )
-                ),
-              ],
-            )
-          )
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 10,
+            children: [
+              TimeSlot(Colors.green, Icons.coffee, "13:00", "Mensa",""),
+              TimeSlot(Color.fromARGB(255, 0, 34, 61), Icons.edit, "14:50", "AUD Ü","APB E001"),
+              TimeSlot(Color.fromARGB(255, 128, 128, 128), Icons.sunny, "9:20", "frei",""),
+            ],
+          ),
         ],
-        ),
-
-
-      ],
       ),
     );
   }
