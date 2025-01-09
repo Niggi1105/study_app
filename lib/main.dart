@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'todo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +24,19 @@ class Dashboard extends StatelessWidget {
       appBar: AppBar(
         title: Center(child: const Text('Study-App')),
         backgroundColor: Colors.white,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard),
+            label: 'Dash',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'todo',
+            
+          ),
+        ],
       ),
       body: Stack(
         children: [
@@ -205,20 +217,18 @@ class OpalLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-       Column(
-        children: [
-          FloatingActionButton(
-            onPressed: () {}, //TODO: Add link to Opal
-            backgroundColor: Colors.lightBlue,
-            child: Icon(
-              Icons.attach_file,
-              color: Colors.white,
-            ),
+    return Column(
+      children: [
+        FloatingActionButton(
+          onPressed: () {}, //TODO: Add link to Opal
+          backgroundColor: Colors.lightBlue,
+          child: Icon(
+            Icons.attach_file,
+            color: Colors.white,
           ),
-          Text('Opal', style: TextStyle(color: Colors.white, fontSize: 15)),
-        ],
-      
+        ),
+        Text('Opal', style: TextStyle(color: Colors.white, fontSize: 15)),
+      ],
     );
   }
 }
@@ -228,20 +238,18 @@ class SelmaLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-       Column(
-        children: [
-          FloatingActionButton(
-            onPressed: () {}, //TODO: Add link to Selma
-            backgroundColor: const Color.fromARGB(255, 255, 136, 0),
-            child: Icon(
-              Icons.folder,
-              color: Colors.white,
-            ),
+    return Column(
+      children: [
+        FloatingActionButton(
+          onPressed: () {}, //TODO: Add link to Selma
+          backgroundColor: const Color.fromARGB(255, 255, 136, 0),
+          child: Icon(
+            Icons.folder,
+            color: Colors.white,
           ),
-          Text('Selma', style: TextStyle(color: Colors.white, fontSize: 15)),
-        ],
-      
+        ),
+        Text('Selma', style: TextStyle(color: Colors.white, fontSize: 15)),
+      ],
     );
   }
 }
@@ -251,19 +259,18 @@ class MatrixLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-      Column(
-        children: [
-          FloatingActionButton(
-            onPressed: () {}, //TODO: Add link to Matrix Chat
-            backgroundColor: const Color.fromARGB(255, 0, 156, 117),
-            child: Icon(
-              Icons.chat_bubble,
-              color: Colors.white,
-            ),
+    return Column(
+      children: [
+        FloatingActionButton(
+          onPressed: () {}, //TODO: Add link to Matrix Chat
+          backgroundColor: const Color.fromARGB(255, 0, 156, 117),
+          child: Icon(
+            Icons.chat_bubble,
+            color: Colors.white,
           ),
-          Text('Matrix', style: TextStyle(color: Colors.white, fontSize: 15)),
-        ],
+        ),
+        Text('Matrix', style: TextStyle(color: Colors.white, fontSize: 15)),
+      ],
     );
   }
 }
