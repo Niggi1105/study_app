@@ -497,7 +497,7 @@ class TimeSlot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 75,
-      width: 75,
+      width: 85,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: Colors.white,
@@ -525,7 +525,7 @@ class TimeSlot extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                       child: Text(
                         time,
                         style: TextStyle(
@@ -591,7 +591,7 @@ class TimeTable extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(200, 0, 0, 0),
+                padding: const EdgeInsets.fromLTRB(215, 0, 0, 0),
                 child: IconButton(
                   icon: Icon(
                     Icons.more_vert,
