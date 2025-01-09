@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,7 +31,7 @@ class Dashboard extends StatelessWidget {
           Container(
             color: const Color.fromARGB(255, 0, 34, 61),
           ),
-          Container(
+          Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             child: Column(
               verticalDirection: VerticalDirection.down,
@@ -38,6 +40,8 @@ class Dashboard extends StatelessWidget {
                 Notification(),
                 Date(),
                 ExternLinks(),
+                MensaInfo(),
+                TimeTable(),
               ],
             ),
           )
@@ -117,7 +121,6 @@ class Notification extends StatelessWidget {
   }
 }
 
-
 class Date extends StatelessWidget {
   const Date({super.key});
 
@@ -192,12 +195,7 @@ class ExternLinks extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       spacing: 20,
-      children: [
-        OpalLink(),
-        SelmaLink(),
-        MatrixLink(),
-        MailLink()
-      ],
+      children: [OpalLink(), SelmaLink(), MatrixLink(), MailLink()],
     );
   }
 }
@@ -207,17 +205,20 @@ class OpalLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return 
+       Column(
         children: [
           FloatingActionButton(
             onPressed: () {}, //TODO: Add link to Opal
             backgroundColor: Colors.lightBlue,
-            child: Icon(Icons.attach_file, color: Colors.white,),
+            child: Icon(
+              Icons.attach_file,
+              color: Colors.white,
+            ),
           ),
           Text('Opal', style: TextStyle(color: Colors.white, fontSize: 15)),
         ],
-      ),
+      
     );
   }
 }
@@ -227,17 +228,20 @@ class SelmaLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return 
+       Column(
         children: [
           FloatingActionButton(
             onPressed: () {}, //TODO: Add link to Selma
             backgroundColor: const Color.fromARGB(255, 255, 136, 0),
-            child: Icon(Icons.folder, color: Colors.white,),
+            child: Icon(
+              Icons.folder,
+              color: Colors.white,
+            ),
           ),
           Text('Selma', style: TextStyle(color: Colors.white, fontSize: 15)),
         ],
-      ),
+      
     );
   }
 }
@@ -247,17 +251,19 @@ class MatrixLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return 
+      Column(
         children: [
           FloatingActionButton(
             onPressed: () {}, //TODO: Add link to Matrix Chat
             backgroundColor: const Color.fromARGB(255, 0, 156, 117),
-            child: Icon(Icons.chat_bubble, color: Colors.white,),
+            child: Icon(
+              Icons.chat_bubble,
+              color: Colors.white,
+            ),
           ),
           Text('Matrix', style: TextStyle(color: Colors.white, fontSize: 15)),
         ],
-      ),
     );
   }
 }
@@ -267,18 +273,155 @@ class MailLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: [
+        FloatingActionButton(
+          onPressed: () {}, //TODO: Add link to Mail
+          backgroundColor: const Color.fromARGB(255, 255, 41, 173),
+          child: Icon(
+            Icons.mail,
+            color: Colors.white,
+          ),
+        ),
+        Text('Mail', style: TextStyle(color: Colors.white, fontSize: 15)),
+      ],
+    );
+  }
+}
+
+//TODO: add color sheme abstraction to make colors more consistent
+class MensaInfo extends StatelessWidget {
+  const MensaInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        color: Colors.white,
+      ),
       child: Column(
         children: [
-          FloatingActionButton(
-            onPressed: () {}, //TODO: Add link to Mail
-            backgroundColor: const Color.fromARGB(255, 255, 41, 173),
-            child: Icon(Icons.mail, color: Colors.white,),
+          Row(
+            children: [
+              Icon(
+                Icons.local_cafe,
+                color: const Color.fromARGB(255, 0, 34, 61),
+              ),
+              Text(
+                'Mensa',
+                style: TextStyle(
+                    color: const Color.fromARGB(255, 0, 34, 61), fontSize: 18),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(220, 0, 0, 0),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: const Color.fromARGB(255, 0, 34, 61),
+                  ),
+                  onPressed: () {}, //T
+                ),
+              ),
+            ],
           ),
-          Text('Mail', style: TextStyle(color: Colors.white, fontSize: 15)),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 10,
+                  children: [
+                    Row(
+                      spacing: 4,
+                      children: [
+                        Text(
+                          'Wann?',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 0, 34, 61)),
+                        ),
+                        Text(
+                          '4.DS',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: const Color.fromARGB(255, 0, 34, 61),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      spacing: 4,
+                      children: [
+                        Text(
+                          'Wo?',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 0, 34, 61)),
+                        ),
+                        Text(
+                          'Alte Mensa',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: const Color.fromARGB(255, 0, 34, 61),
+                          ),
+                        ),
+                      ],
+                    ),
+                    ElevatedButton(
+                      onPressed: () {}, //TODO: Add link to Mensa
+                      style: ButtonStyle(
+                          fixedSize:
+                              WidgetStateProperty.all<Size>(Size(160, 30)),
+                          backgroundColor: WidgetStateProperty.all<Color>(
+                              const Color.fromARGB(255, 0, 34, 61))),
+                      child: Text(
+                        "Zum Angebot",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                  child: Image(
+                    image: AssetImage("assets/mensa.jpg"),
+                    fit: BoxFit.scaleDown,
+                    width: 100,
+                    height: 100,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
+class TimeTable extends StatelessWidget {
+  const TimeTable({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        color: Colors.white,
+      ),
+      child: Column(
+        children: [],
+      ),
+    );
+  }
+}
