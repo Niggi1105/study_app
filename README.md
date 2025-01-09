@@ -1,16 +1,14 @@
 # study_app
 
-A new Flutter project.
+A simple and minimalistic implementation of a study app frontend using flutter. This Project is for educational purposes only and there are no plans to maintain this project in the future.
+Feel free to use the project as a resource to learn the basics of creating a flutter application.
 
-## Getting Started
+## how to run
+### requirements
+Make sure you have a working android emulator installed and running. You also need to have flutter installed, make sure with flutter doctor that you have everything you need.
+### run the following commands
+1. `git clone https://github.com/Niggi1105/study_app.git`
+2. `cd study_app`
+3. `flutter run`
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+you should now see the application opening on your emulator
