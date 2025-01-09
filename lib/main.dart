@@ -496,8 +496,8 @@ class TimeSlot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      width: 80,
+      height: 75,
+      width: 75,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: Colors.white,
@@ -525,7 +525,7 @@ class TimeSlot extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
                       child: Text(
                         time,
                         style: TextStyle(
@@ -565,6 +565,7 @@ class TimeTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 241,
       padding: const EdgeInsets.all(5),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
@@ -616,7 +617,7 @@ class TimeTable extends StatelessWidget {
             children: [
               TimeSlot(Colors.green, Icons.coffee, "13:00", "Mensa",""),
               TimeSlot(Color.fromARGB(255, 0, 34, 61), Icons.edit, "14:50", "AUD Ü","APB E001"),
-              TimeSlot(Color.fromARGB(255, 128, 128, 128), Icons.sunny, "9:20", "frei",""),
+              TimeSlot(Color.fromARGB(255, 128, 128, 128), Icons.sunny, "16:20", "frei",""),
             ],
           ),
         ],
