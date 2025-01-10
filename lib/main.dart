@@ -64,16 +64,18 @@ class Dashboard extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            child: Column(
-              verticalDirection: VerticalDirection.down,
-              spacing: 14,
-              children: [
-                Notification(),
-                Date(),
-                ExternLinks(),
-                MensaInfo(),
-                TimeTable(),
-              ],
+            child: ListView(
+              children: [Column(
+                verticalDirection: VerticalDirection.down,
+                spacing: 14,
+                children: [
+                  Notification(),
+                  Date(),
+                  ExternLinks(),
+                  MensaInfo(),
+                  TimeTable(),
+                ],
+              )],
             ),
           )
         ],
@@ -157,16 +159,21 @@ class Notification extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: Row(
-                spacing: 10,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
-                    Icons.error,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-                  Text(
-                    'Meldung',
-                    style: TextStyle(color: Colors.white, fontSize: 17),
+                  Row(
+                    spacing: 10,
+                    children: [
+                      Icon(
+                        Icons.error,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'Meldung',
+                        style: TextStyle(color: Colors.white, fontSize: 17),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(200, 0, 0, 0),
@@ -383,16 +390,21 @@ class MensaInfo extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            spacing: 10,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(
-                Icons.local_cafe,
-                color: const Color.fromARGB(255, 0, 34, 61),
-              ),
-              Text(
-                'Mensa',
-                style: TextStyle(
-                    color: const Color.fromARGB(255, 0, 34, 61), fontSize: 18),
+              Row(
+            spacing: 10,
+                children: [
+                  Icon(
+                    Icons.local_cafe,
+                    color: const Color.fromARGB(255, 0, 34, 61),
+                  ),
+                  Text(
+                    'Mensa',
+                    style: TextStyle(
+                        color: const Color.fromARGB(255, 0, 34, 61), fontSize: 18),
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(210, 0, 0, 0),
@@ -409,6 +421,7 @@ class MensaInfo extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -466,15 +479,12 @@ class MensaInfo extends StatelessWidget {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
-                  child: Image(
+                  Image(
                     image: AssetImage("assets/mensa.jpg"),
                     fit: BoxFit.scaleDown,
                     width: 100,
                     height: 100,
                   ),
-                ),
               ],
             ),
           ),
@@ -577,18 +587,23 @@ class TimeTable extends StatelessWidget {
         spacing: 10,
         children: [
           Row(
-            spacing: 10,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(
-                Icons.calendar_month,
-                color: const Color.fromARGB(255, 0, 34, 61),
-              ),
-              Text(
-                'Heute',
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 0, 34, 61),
-                  fontSize: 18,
-                ),
+              Row(
+            spacing: 10,
+                children: [
+                  Icon(
+                    Icons.calendar_month,
+                    color: const Color.fromARGB(255, 0, 34, 61),
+                  ),
+                  Text(
+                    'Heute',
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 0, 34, 61),
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(215, 0, 0, 0),
@@ -625,3 +640,4 @@ class TimeTable extends StatelessWidget {
     );
   }
 }
+
